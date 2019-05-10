@@ -44,8 +44,9 @@ sub _get {
 
     my @ua;
     if ($nickname eq 'newest_firefox') {
+        my $os = $^O eq 'MSWin32' ? 'windows' : 'linux';
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{firefox} } @ua0;
+            grep { $_->{firefox} && $_->{os} eq $os } @ua0;
     } elsif ($nickname eq 'newest_firefox_linux') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
             grep { $_->{firefox} && $_->{os} eq 'linux' } @ua0;
@@ -53,8 +54,9 @@ sub _get {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
             grep { $_->{firefox} && $_->{os} eq 'windows' } @ua0;
     } elsif ($nickname eq 'newest_chrome') {
+        my $os = $^O eq 'MSWin32' ? 'windows' : 'linux';
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{chrome} } @ua0;
+            grep { $_->{chrome} && $_->{os} eq $os } @ua0;
     } elsif ($nickname eq 'newest_chrome_linux') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
             grep { $_->{chrome} && $_->{os} eq 'linux' } @ua0;
