@@ -1,3 +1,11 @@
+0.003   2020-05-01  Released-By: PERLANCAR; Urgency: medium
+
+	- Use WordList::HTTP::UserAgentString::Browser::Firefox instead of
+	  WordList::HTTP::UserAgentString::PERLANCAR.
+
+	- Cache results from wordlist module for performance reason.
+
+
 0.002   2019-05-10  Released-By: PERLANCAR
 
 	- For newest_firefox & newest_chrome, give Windows when on Windows,
