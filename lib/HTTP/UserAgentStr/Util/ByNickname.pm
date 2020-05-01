@@ -1,6 +1,8 @@
 package HTTP::UserAgentStr::Util::ByNickname;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use strict;
@@ -22,12 +24,12 @@ our %EXPORT_TAGS = (all => \@nicknames);
 sub _get {
     require HTTP::BrowserDetect;
     require Versioning::Scheme::Dotted;
-    require WordList::HTTP::UserAgentString::PERLANCAR;
+    require WordList::HTTP::UserAgentString::Browser::Firefox;
 
     my $nickname = shift;
 
     my @ua0;
-    my $wl = WordList::HTTP::UserAgentString::PERLANCAR->new;
+    my $wl = WordList::HTTP::UserAgentString::Browser::Firefox->new;
     $wl->each_word(
         sub {
             my $orig = shift;
