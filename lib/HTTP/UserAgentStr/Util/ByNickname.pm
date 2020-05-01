@@ -72,12 +72,13 @@ sub _get {
     $ua[0]{orig};
 }
 
-sub newest_firefox { _get("newest_firefox") }
-sub newest_firefox_linux { _get("newest_firefox_linux") }
-sub newest_firefox_win { _get("newest_firefox_win") }
-sub newest_chrome { _get("newest_chrome") }
-sub newest_chrome_linux { _get("newest_chrome_linux") }
-sub newest_chrome_win { _get("newest_chrome_win") }
+our %cache;
+sub newest_firefox       { $cache{newest_firefox}       //= _get("newest_firefox") }
+sub newest_firefox_linux { $cache{newest_firefox_linux} //= _get("newest_firefox_linux") }
+sub newest_firefox_win   { $cache{newest_firefox_win}   //= _get("newest_firefox_win") }
+sub newest_chrome        { $cache{newest_chrome}        //= _get("newest_chrome") }
+sub newest_chrome_linux  { $cache{newest_chrome_linux}  //= _get("newest_chrome_linux") }
+sub newest_chrome_win    { $cache{newest_chrome_win}    //= _get("newest_chrome_win") }
 
 1;
 # ABSTRACT: Get popular HTTP User-Agent string by nickname
