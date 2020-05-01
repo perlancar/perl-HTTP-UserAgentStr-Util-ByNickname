@@ -46,23 +46,23 @@ sub _get {
     if ($nickname eq 'newest_firefox') {
         my $os = $^O eq 'MSWin32' ? 'windows' : 'linux';
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{firefox} && $_->{os} eq $os } @ua0;
+            grep { $_->{firefox} && ($_->{os}//'') eq $os } @ua0;
     } elsif ($nickname eq 'newest_firefox_linux') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{firefox} && $_->{os} eq 'linux' } @ua0;
+            grep { $_->{firefox} && ($_->{os}//'') eq 'linux' } @ua0;
     } elsif ($nickname eq 'newest_firefox_win') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{firefox} && $_->{os} eq 'windows' } @ua0;
+            grep { $_->{firefox} && ($_->{os}//'') eq 'windows' } @ua0;
     } elsif ($nickname eq 'newest_chrome') {
         my $os = $^O eq 'MSWin32' ? 'windows' : 'linux';
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{chrome} && $_->{os} eq $os } @ua0;
+            grep { $_->{chrome} && ($_->{os}//'') eq $os } @ua0;
     } elsif ($nickname eq 'newest_chrome_linux') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{chrome} && $_->{os} eq 'linux' } @ua0;
+            grep { $_->{chrome} && ($_->{os}//'') eq 'linux' } @ua0;
     } elsif ($nickname eq 'newest_chrome_win') {
         @ua = sort { Versioning::Scheme::Dotted->cmp_version($b->{version}, $a->{version}) }
-            grep { $_->{chrome} && $_->{os} eq 'windows' } @ua0;
+            grep { $_->{chrome} && ($_->{os}//'') eq 'windows' } @ua0;
     } else {
         die "BUG: Unknown nickname";
     }
